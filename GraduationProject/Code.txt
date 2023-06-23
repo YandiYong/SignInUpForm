@@ -1,0 +1,61 @@
+def select_solar_system():
+    # Define appliance requirements
+    appliance_requirements = {
+        'TV': {'power': 100, 'usage': 4},
+        'Refrigerator': {'power': 200, 'usage': 24},
+        'Lights': {'power': 50, 'usage': 6},
+    }
+
+    # Calculate total power consumption
+    total_power_consumption = sum(
+        (appliance['power'] * appliance['usage']) for appliance in appliance_requirements.values()
+    )
+
+    # Research and define specifications
+    inverters = [
+        {'model': 'Inverter A', 'power_rating': 1000},
+        {'model': 'Inverter B', 'power_rating': 2000},
+        {'model': 'Inverter C', 'power_rating': 3000},
+    ]
+
+    batteries = [
+        {'model': 'Battery X', 'capacity': 5000},
+        {'model': 'Battery Y', 'capacity': 8000},
+        {'model': 'Battery Z', 'capacity': 10000},
+    ]
+
+    solar_panels = [
+        {'model': 'Panel P', 'capacity': 2000},
+        {'model': 'Panel Q', 'capacity': 3000},
+        {'model': 'Panel R', 'capacity': 4000},
+    ]
+
+    # Create selection criteria
+    inverter_criteria = lambda inverter: inverter['power_rating'] >= total_power_consumption      
+    battery_criteria = lambda battery: battery['capacity'] >= total_power_consumption
+    panel_criteria = lambda panel: panel['capacity'] >= total_power_consumption
+
+    # Evaluate available options
+    suitable_inverters = list(filter(inverter_criteria, inverters))
+    suitable_batteries = list(filter(battery_criteria, batteries))
+    suitable_panels = list(filter(panel_criteria, solar_panels))
+
+    # Display the recommended options
+    print("Recommended inverter options:")
+    for inverter in suitable_inverters:
+        print(inverter['model'])
+
+    print("\nRecommended battery options:")
+    for battery in suitable_batteries:
+        print(battery['model'])
+
+    print("\nRecommended solar panel options:")
+    for panel in suitable_panels:
+        print(panel['model'])
+
+
+# Call the function to select the solar system components
+select_solar_system()
+
+
+ CC1M12312023
